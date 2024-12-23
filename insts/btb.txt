@@ -1,0 +1,6 @@
+Basstrombone
+
+F0 Bb1 Pedal Tones
+Bb1 Eb2 Trigger Notes
+E2 C4 clear, controlable
+C4 G4 weak

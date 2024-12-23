@@ -1,0 +1,6 @@
+Guitar
+
+transposition: -8
+
+E3 C6 all
+

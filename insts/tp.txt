@@ -1,0 +1,8 @@
+Trumpet
+
+transposition: -j2
+
+F#3 C4 muddy
+C4 A5 comfortable
+A5 D6 bright
+D6 G6 lead

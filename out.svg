@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="3508" height="2480" viewBox="0 0 3508 2480">
+<defs>
+</defs>
+<rect x="0" y="0" width="3508" height="2480" fill="white" />
+<g>
+<path d="M100,1439.75 L3408,1439.75" stroke="black" stroke-width="1.6" stroke-dasharray="none" />
+<path d="M100,1422.75 L3408,1422.75" stroke="black" stroke-width="1.6" stroke-dasharray="none" />
+<path d="M100,1405.75 L3408,1405.75" stroke="black" stroke-width="1.6" stroke-dasharray="none" />
+<path d="M100,1388.75 L3408,1388.75" stroke="black" stroke-width="1.6" stroke-dasharray="none" />
+<path d="M100,1371.75 L3408,1371.75" stroke="black" stroke-width="1.6" stroke-dasharray="none" />
+<path d="M100,1354.75 L3408,1354.75" stroke="black" stroke-width="1.6" stroke-dasharray="10 30" />
+<path d="M100,1337.75 L3408,1337.75" stroke="black" stroke-width="1.6" stroke-dasharray="10 30" />
+<path d="M100,1320.75 L3408,1320.75" stroke="black" stroke-width="1.6" stroke-dasharray="none" />
+<path d="M100,1303.75 L3408,1303.75" stroke="black" stroke-width="1.6" stroke-dasharray="none" />
+<path d="M100,1286.75 L3408,1286.75" stroke="black" stroke-width="1.6" stroke-dasharray="none" />
+<path d="M100,1269.75 L3408,1269.75" stroke="black" stroke-width="1.6" stroke-dasharray="none" />
+<path d="M100,1252.75 L3408,1252.75" stroke="black" stroke-width="1.6" stroke-dasharray="none" />
+<path d="M100,1235.75 L3408,1235.75" stroke="black" stroke-width="1.6" stroke-dasharray="10 30" />
+<path d="M100,1218.75 L3408,1218.75" stroke="black" stroke-width="1.6" stroke-dasharray="none" />
+<path d="M100,1201.75 L3408,1201.75" stroke="black" stroke-width="1.6" stroke-dasharray="none" />
+<path d="M100,1184.75 L3408,1184.75" stroke="black" stroke-width="1.6" stroke-dasharray="none" />
+<path d="M100,1167.75 L3408,1167.75" stroke="black" stroke-width="1.6" stroke-dasharray="none" />
+<path d="M100,1150.75 L3408,1150.75" stroke="black" stroke-width="1.6" stroke-dasharray="none" />
+<path d="M100,1133.75 L3408,1133.75" stroke="black" stroke-width="1.6" stroke-dasharray="10 30" />
+<path d="M100,1116.75 L3408,1116.75" stroke="black" stroke-width="1.6" stroke-dasharray="10 30" />
+<path d="M100,1099.75 L3408,1099.75" stroke="black" stroke-width="1.6" stroke-dasharray="none" />
+<path d="M100,1082.75 L3408,1082.75" stroke="black" stroke-width="1.6" stroke-dasharray="none" />
+<path d="M100,1065.75 L3408,1065.75" stroke="black" stroke-width="1.6" stroke-dasharray="none" />
+<path d="M100,1048.75 L3408,1048.75" stroke="black" stroke-width="1.6" stroke-dasharray="none" />
+<path d="M100,1031.75 L3408,1031.75" stroke="black" stroke-width="1.6" stroke-dasharray="none" />
+</g>
+<g transform="translate(110 1201.75) scale(8.5)">
+<g transform="translate(-72,-183) scale(0.336952)">
+<path d="m 225.4624,521.10094 c 0.30436,3.12626 -2.01982,5.6563 -4.07765,7.70149 -0.93488,0.89716 -0.15496,0.14819 -0.64369,0.5943 -0.10215,-0.47963 -0.29856,-1.73157 -0.28021,-2.11043 0.13049,-2.6939 2.31983,-6.58747 4.23787,-8.02354 0.30891,0.57671 0.56363,0.62311 0.76368,1.83818 z m 0.651,16.14203 c -1.23253,-0.90596 -2.85036,-1.14344 -4.334,-0.88501 -0.19134,-1.25466 -0.38267,-2.50932 -0.57401,-3.76398 2.35104,-2.32904 4.90659,-5.03189 5.04107,-8.53907 0.0587,-2.23194 -0.27625,-4.67135 -1.67875,-6.48357 -1.70014,0.12823 -2.8992,2.15596 -3.8016,3.4165 -1.48891,2.6705 -1.14141,5.91692 -0.57004,8.79646 -0.80939,0.95172 -1.92953,1.74344 -2.72737,2.7338 -2.3561,2.3087 -4.40847,5.43025 -4.00464,8.87835 0.18336,3.33399 2.58943,6.43437 5.87022,7.22732 1.2457,0.31422 2.56395,0.34521 3.82412,0.0982 0.21994,2.25009 1.02706,4.62966 0.0925,6.8131 -0.70074,1.59858 -2.78755,3.00471 -4.3325,2.1919 -0.59937,-0.31533 -0.11367,-0.0508 -0.47805,-0.25127 1.06986,-0.25731 1.99965,-1.0365 2.26007,-1.56492 0.83778,-1.4642 -0.39984,-3.63919 -2.1554,-3.35881 -2.262,0.0468 -3.19046,3.14078 -1.73562,4.685 1.34679,1.52039 3.833,1.31219 5.43011,0.31801 1.81297,-1.17995 2.03921,-3.54319 1.83214,-5.562 -0.0695,-0.6774 -0.40233,-2.66985 -0.44353,-3.38683 0.69722,-0.24836 0.20926,-0.0591 1.19278,-0.44852 2.66022,-1.05336 4.35751,-4.25882 3.59413,-7.12278 -0.31819,-1.46882 -1.04369,-2.91369 -2.30163,-3.79187 z m 0.561,5.75702 c 0.21404,1.99169 -1.05371,4.32147 -3.07902,4.9599 -0.13626,-0.79497 -0.17218,-1.01081 -0.26298,-1.47413 -0.48222,-2.46072 -0.744,-4.98787 -1.116,-7.4818 1.62492,-0.16805 3.45763,0.54322 4.0229,2.18476 0.24373,0.57638 0.34226,1.19674 0.4351,1.81127 z m -5.149,5.19598 c -2.54414,0.14147 -4.99954,-1.59498 -5.63427,-4.08035 -0.74901,-2.15316 -0.52831,-4.63026 0.82067,-6.50474 1.11514,-1.7019 2.60651,-3.10437 4.0286,-4.54292 0.183,1.12733 0.366,2.25465 0.54899,3.38198 -2.99063,0.78214 -5.0046,4.72526 -3.21499,7.45102 0.53244,0.76426 1.97647,2.22315 2.7655,1.634 -1.10198,-0.68237 -2.00332,-1.85844 -1.80949,-3.2266 -0.0821,-1.28246 1.36985,-2.91061 2.65129,-3.19833 0.43841,2.86925 0.94128,6.07369 1.3797,8.94294 -0.50539,0.10002 -1.02115,0.14297 -1.536,0.143 z" fill="black" />
+</g>
+</g>
+<path d="M448.45454545454544,1031.75 L448.45454545454544,1439.75" stroke-width="1.3" stroke="black" />
+<g transform="translate(152.5 1235.75) scale(8.5)">
+<g>
+<g transform="translate(29.818181818181813 2)">
+<ellipse cx="0" cy="0" rx="1.2" ry="0.7999999999999999" fill="black" transform="rotate(-33.33)" id="d0" />
+</g>
+<g transform="translate(29.818181818181813 -12)">
+<use xlink:href="#d0" />
+</g>
+<g transform="translate(29.818181818181813 28) rotate(-45)">
+<text x="0" y="0" font-size="3" text-anchor="end" font="Cochin">Lisanne</text>
+</g>
+</g>
+</g>
+<path d="M744.4090909090909,1031.75 L744.4090909090909,1439.75" stroke-width="1.3" stroke="black" />
+<g transform="translate(448.45454545454544 1235.75) scale(8.5)">
+<g>
+<g transform="translate(29.818181818181813 0)">
+<use xlink:href="#d0" />
+</g>
+<g transform="translate(29.818181818181813 -14)">
+<use xlink:href="#d0" />
+</g>
+<g transform="translate(29.818181818181813 28) rotate(-45)">
+<text x="0" y="0" font-size="3" text-anchor="end" font="Cochin">Flute</text>
+</g>
+</g>
+</g>
+<path d="M1040.3636363636363,1031.75 L1040.3636363636363,1439.75" stroke-width="1.3" stroke="black" />
+<g transform="translate(744.4090909090909 1235.75) scale(8.5)">
+<g>
+<g transform="translate(29.818181818181813 13)">
+<use xlink:href="#d0" />
+</g>
+<g transform="translate(30.478181818181813 -5)">
+<use xlink:href="#d0" />
+</g>
+<g transform="translate(29.158181818181813 -5)">
+<use xlink:href="#d0" />
+</g>
+<g transform="translate(29.818181818181813 -13)">
+<use xlink:href="#d0" />
+</g>
+<g transform="translate(29.818181818181813 -20)">
+<use xlink:href="#d0" />
+</g>
+<g transform="translate(29.818181818181813 28) rotate(-45)">
+<text x="0" y="0" font-size="3" text-anchor="end" font="Cochin">Clarinet</text>
+</g>
+</g>
+</g>
+<path d="M1336.3181818181818,1031.75 L1336.3181818181818,1439.75" stroke-width="1.3" stroke="black" />
+<g transform="translate(1040.3636363636363 1235.75) scale(8.5)">
+<g>
+<g transform="translate(29.818181818181813 6)">
+<use xlink:href="#d0" />
+</g>
+<g transform="translate(29.818181818181813 4)">
+<use xlink:href="#d0" />
+</g>
+<g transform="translate(30.478181818181813 -2)">
+<use xlink:href="#d0" />
+</g>
+<g transform="translate(29.158181818181813 -3)">
+<use xlink:href="#d0" />
+</g>
+<g transform="translate(30.478181818181813 -9)">
+<use xlink:href="#d0" />
+</g>
+<g transform="translate(29.158181818181813 -10)">
+<use xlink:href="#d0" />
+</g>
+<g transform="translate(29.818181818181813 -12)">
+<use xlink:href="#d0" />
+</g>
+<g transform="translate(29.818181818181813 28) rotate(-45)">
+<text x="0" y="0" font-size="3" text-anchor="end" font="Cochin">Alto Saxophone</text>
+</g>
+</g>
+</g>
+<path d="M1632.2727272727273,1031.75 L1632.2727272727273,1439.75" stroke-width="1.3" stroke="black" />
+<g transform="translate(1336.3181818181818 1235.75) scale(8.5)">
+<g>
+<g transform="translate(29.818181818181813 9)">
+<use xlink:href="#d0" />
+</g>
+<g transform="translate(29.818181818181813 7)">
+<use xlink:href="#d0" />
+</g>
+<g transform="translate(30.478181818181813 1)">
+<use xlink:href="#d0" />
+</g>
+<g transform="translate(29.158181818181813 0)">
+<use xlink:href="#d0" />
+</g>
+<g transform="translate(30.478181818181813 -6)">
+<use xlink:href="#d0" />
+</g>
+<g transform="translate(29.158181818181813 -7)">
+<use xlink:href="#d0" />
+</g>
+<g transform="translate(29.818181818181813 -9)">
+<use xlink:href="#d0" />
+</g>
+<g transform="translate(29.818181818181813 28) rotate(-45)">
+<text x="0" y="0" font-size="3" text-anchor="end" font="Cochin">Tenor Saxophone</text>
+</g>
+</g>
+</g>
+<path d="M1928.2272727272727,1031.75 L1928.2272727272727,1439.75" stroke-width="1.3" stroke="black" />
+<g transform="translate(1632.2727272727273 1235.75) scale(8.5)">
+<g>
+<g transform="translate(29.818181818181813 13)">
+<use xlink:href="#d0" />
+</g>
+<g transform="translate(29.818181818181813 11)">
+<use xlink:href="#d0" />
+</g>
+<g transform="translate(30.478181818181813 5)">
+<use xlink:href="#d0" />
+</g>
+<g transform="translate(29.158181818181813 4)">
+<use xlink:href="#d0" />
+</g>
+<g transform="translate(30.478181818181813 -2)">
+<use xlink:href="#d0" />
+</g>
+<g transform="translate(29.158181818181813 -3)">
+<use xlink:href="#d0" />
+</g>
+<g transform="translate(29.818181818181813 -5)">
+<use xlink:href="#d0" />
+</g>
+<g transform="translate(29.818181818181813 28) rotate(-45)">
+<text x="0" y="0" font-size="3" text-anchor="end" font="Cochin">Baritone Saxophone</text>
+</g>
+</g>
+</g>
+<path d="M2224.181818181818,1031.75 L2224.181818181818,1439.75" stroke-width="1.3" stroke="black" />
+<g transform="translate(1928.2272727272725 1235.75) scale(8.5)">
+<g>
+<g transform="translate(29.818181818181813 5)">
+<use xlink:href="#d0" />
+</g>
+<g transform="translate(29.818181818181813 1)">
+<use xlink:href="#d0" />
+</g>
+<g transform="translate(29.818181818181813 -11)">
+<use xlink:href="#d0" />
+</g>
+<g transform="translate(29.818181818181813 -14)">
+<use xlink:href="#d0" />
+</g>
+<g transform="translate(29.818181818181813 -17)">
+<use xlink:href="#d0" />
+</g>
+<g transform="translate(29.818181818181813 28) rotate(-45)">
+<text x="0" y="0" font-size="3" text-anchor="end" font="Cochin">Trumpet</text>
+</g>
+</g>
+</g>
+<path d="M2520.1363636363635,1031.75 L2520.1363636363635,1439.75" stroke-width="1.3" stroke="black" />
+<g transform="translate(2224.181818181818 1235.75) scale(8.5)">
+<g>
+<g transform="translate(29.818181818181813 12)">
+<use xlink:href="#d0" />
+</g>
+<g transform="translate(29.818181818181813 10)">
+<use xlink:href="#d0" />
+</g>
+<g transform="translate(29.818181818181813 -4)">
+<use xlink:href="#d0" />
+</g>
+<g transform="translate(29.818181818181813 -7)">
+<use xlink:href="#d0" />
+</g>
+<g transform="translate(29.818181818181813 28) rotate(-45)">
+<text x="0" y="0" font-size="3" text-anchor="end" font="Cochin">Trombone</text>
+</g>
+</g>
+</g>
+<path d="M2816.090909090909,1031.75 L2816.090909090909,1439.75" stroke-width="1.3" stroke="black" />
+<g transform="translate(2520.1363636363635 1235.75) scale(8.5)">
+<g>
+<g transform="translate(29.818181818181813 25)">
+<use xlink:href="#d0" />
+</g>
+<g transform="translate(29.818181818181813 15)">
+<use xlink:href="#d0" />
+</g>
+<g transform="translate(30.478181818181813 12)">
+<use xlink:href="#d0" />
+</g>
+<g transform="translate(29.158181818181813 12)">
+<use xlink:href="#d0" />
+</g>
+<g transform="translate(29.818181818181813 0)">
+<use xlink:href="#d0" />
+</g>
+<g transform="translate(29.818181818181813 -4)">
+<use xlink:href="#d0" />
+</g>
+<g transform="translate(29.818181818181813 28) rotate(-45)">
+<text x="0" y="0" font-size="3" text-anchor="end" font="Cochin">Basstrombone</text>
+</g>
+</g>
+</g>
+<path d="M3112.0454545454545,1031.75 L3112.0454545454545,1439.75" stroke-width="1.3" stroke="black" />
+<g transform="translate(2816.090909090909 1235.75) scale(8.5)">
+<g>
+<g transform="translate(29.818181818181813 12)">
+<use xlink:href="#d0" />
+</g>
+<g transform="translate(29.818181818181813 -7)">
+<use xlink:href="#d0" />
+</g>
+<g transform="translate(29.818181818181813 28) rotate(-45)">
+<text x="0" y="0" font-size="3" text-anchor="end" font="Cochin">Guitar</text>
+</g>
+</g>
+</g>
+<path d="M3402.8,1031.75 L3402.8,1439.75" stroke-width="1.3" stroke="black" />
+<path d="M3408.0,1030.95 L3408.0,1440.55" stroke-width="2.6" stroke="black" />
+<g transform="translate(3112.0454545454545 1235.75) scale(8.5)">
+<g>
+<g transform="translate(29.818181818181813 19)">
+<use xlink:href="#d0" />
+</g>
+<g transform="translate(29.818181818181813 5)">
+<use xlink:href="#d0" />
+</g>
+<g transform="translate(29.818181818181813 0)">
+<use xlink:href="#d0" />
+</g>
+<g transform="translate(29.818181818181813 28) rotate(-45)">
+<text x="0" y="0" font-size="3" text-anchor="end" font="Cochin">Bass</text>
+</g>
+</g>
+</g>
+</svg>
