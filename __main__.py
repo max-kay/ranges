@@ -190,7 +190,7 @@ def parsing_test():
 
 def grafics_test():
     img = from_names(
-        ["lisanne", "fl", "cl", "as", "ts", "bs", "tp", "tb", "btb", "git", "b"]
+        ["mezzosoprano", "fl", "cl", "as", "ts", "bs", "tp", "tb", "btb", "git", "b"]
     )
     img.save_svg("out.svg")
 
