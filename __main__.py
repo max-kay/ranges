@@ -1,19 +1,22 @@
+from typing import Any
 import drawsvg as draw
-from music import Instrument
-from elements import G_CLEF, NOTE_HEAD, CLEF_WIDTH
+from music import Instrument, Pitch
+from elements import ACC_OFFSET, FULL_NOTEHEAD, LF_CLEF, F_CLEF, SVG_ACCIDENTAL_MAP, UG_CLEF, G_CLEF, CLEF_WIDTH, translate
+from utils import length, sub, add, mult
 
-TEXT_STYLING = {
+TEXT_STYLING: dict[str, Any] = {
     "font": "Cochin",
 }
 
-CLEF_OFFSET = 10
+FORMAT = (2*3508, 2480/2)  # 2 times A4 landscape
 MARGIN = 100
-STAFF_LINE_SPACING = 17
-STAFF_STROKE_WIDTH = 1.6
-SECONDARY_STROKE_WIDTH = 1.3
-FORMAT = (3508, 2480)  # A4
 MIN_X = MARGIN
 MAX_X = FORMAT[0] - MARGIN
+
+STAFF_LINE_SPACING = 17
+CLEF_OFFSET = STAFF_LINE_SPACING / 17 * 10
+STAFF_STROKE_WIDTH = STAFF_LINE_SPACING/2 * 0.22
+SECONDARY_STROKE_WIDTH = STAFF_LINE_SPACING/2 * 0.36
 
 
 def generate_staff(instruments: list[Instrument]) -> draw.Drawing:
@@ -52,14 +55,18 @@ def generate_staff(instruments: list[Instrument]) -> draw.Drawing:
         if i % 2 == 1:
             continue
         height = middle_c_line - STAFF_LINE_SPACING / 2 * i
-        dashes = "none"
+        stroke_width = STAFF_STROKE_WIDTH
+        color = "black"
         if i > 10 or i < -10 or i == 0:
-            dashes = "10 30"
+            stroke_width = STAFF_STROKE_WIDTH/2
+            color = "#aaaaaa"
 
         if display_upper_g and 2 + 14 <= i <= 10 + 14:
-            dashes = "none"
+            stroke_width = STAFF_STROKE_WIDTH
+            color = "black"
         if display_lower_f and -2 - 14 >= i >= -10 - 14:
-            dashes = "none"
+            stroke_width = STAFF_STROKE_WIDTH
+            color = "black"
 
         staff_lines.append(
             draw.Line(
@@ -67,17 +74,35 @@ def generate_staff(instruments: list[Instrument]) -> draw.Drawing:
                 height,
                 MAX_X,
                 height,
-                stroke="black",
-                stroke_width=STAFF_STROKE_WIDTH,
-                stroke_dasharray=dashes,
+                stroke=color,
+                stroke_width=stroke_width,
             )
         )
+    img.append(draw.Text("Polyband Ranges", x=FORMAT[0]/2, y=MARGIN, font_size=70, **TEXT_STYLING, anchor="middle" ))
 
     img.append(staff_lines)
     img.append(
         draw.Group(
+            children=[UG_CLEF],
+            transform=f"translate({CLEF_OFFSET + MARGIN} {middle_c_line-9*STAFF_LINE_SPACING}) scale({STAFF_LINE_SPACING/2})",
+        )
+    )
+    img.append(
+        draw.Group(
             children=[G_CLEF],
             transform=f"translate({CLEF_OFFSET + MARGIN} {middle_c_line-2*STAFF_LINE_SPACING}) scale({STAFF_LINE_SPACING/2})",
+        )
+    )
+    img.append(
+        draw.Group(
+            children=[F_CLEF],
+            transform=f"translate({CLEF_OFFSET + MARGIN} {middle_c_line+2*STAFF_LINE_SPACING}) scale({STAFF_LINE_SPACING/2})",
+        )
+    )
+    img.append(
+        draw.Group(
+            children=[LF_CLEF],
+            transform=f"translate({CLEF_OFFSET + MARGIN} {middle_c_line+9*STAFF_LINE_SPACING}) scale({STAFF_LINE_SPACING/2})",
         )
     )
 
@@ -99,9 +124,9 @@ def generate_staff(instruments: list[Instrument]) -> draw.Drawing:
         else:
             img.append(
                 draw.Line(
-                    x + instr_width - 4 * SECONDARY_STROKE_WIDTH,
+                    x + instr_width - 3.5 * SECONDARY_STROKE_WIDTH,
                     middle_c_line - STAFF_LINE_SPACING / 2 * highest_full,
-                    x + instr_width - 4 * SECONDARY_STROKE_WIDTH,
+                    x + instr_width - 3.5 * SECONDARY_STROKE_WIDTH,
                     middle_c_line - STAFF_LINE_SPACING / 2 * lowest_full,
                     stroke_width=SECONDARY_STROKE_WIDTH,
                     stroke="black",
@@ -117,7 +142,7 @@ def generate_staff(instruments: list[Instrument]) -> draw.Drawing:
                     middle_c_line
                     - STAFF_LINE_SPACING / 2 * lowest_full
                     + STAFF_STROKE_WIDTH / 2,
-                    stroke_width=SECONDARY_STROKE_WIDTH * 2,
+                    stroke_width=SECONDARY_STROKE_WIDTH * 3,
                     stroke="black",
                 )
             )
@@ -131,37 +156,81 @@ def generate_staff(instruments: list[Instrument]) -> draw.Drawing:
 
 INST_MARGIN = 5
 MAIN_FONT_SIZE = 3
-OVERLAP_OFFSET = 0.66
+OVERLAP_OFFSET = 2.7837096774/2
+SMALL_STROKE_WIDTH = 0.2
+
 
 def instr_graph(instr: Instrument, width: float, max_y: float) -> draw.Group:
     """
     This function returns a svg group with all information between x=0 and x=width including margins
     Pitch C4 (middle C) is at y=0 and D4 at y=-1
     """
-    group = draw.Group()
-    note_position = width - INST_MARGIN
     ranges = instr.get_sounding_pitch_ranges()
-    current_offset = 0
+    pitches: list[Pitch] = []
+    lines: list[bool] = []  # [i] == True -> line from pitches[i] to [i+1]
     for i in range(len(ranges)):
-        group.append(
-            draw.Group(
-                [NOTE_HEAD],
-                transform=f"translate({note_position-current_offset*OVERLAP_OFFSET} {-ranges[i].start.to_staff_position()})",
-            )
-        )
-        if i != len(ranges)-1 and ranges[i].end == ranges[i + 1].start:
-            current_offset = 0
-            continue
-        elif i != len(ranges)-1 and ranges[i].end.to_staff_position()-ranges[i + 1].start.to_staff_position() < 3 :
-            current_offset = 1
+        pitches.append(ranges[i].start)
+        if (ranges[i].end.to_staff_position() - ranges[i].start.to_staff_position()) > 3:
+            lines.append(True)
         else:
-            current_offset = 0
-        group.append(
-            draw.Group(
-                [NOTE_HEAD],
-                transform=f"translate({note_position+current_offset*OVERLAP_OFFSET} {-ranges[i].end.to_staff_position()})",
-            )
+            lines.append(False)
+        if i != len(ranges) - 1 and ranges[i].end == ranges[i + 1].start:
+            continue
+        pitches.append(ranges[i].end)
+        if i != len(ranges) - 1:
+            lines.append(False)
+
+
+    to_close = []
+    for i in range(len(pitches) - 1):
+        to_close.append(
+            (pitches[i + 1].to_staff_position() - pitches[i].to_staff_position()) < 2
         )
+
+    SAME_POS_MULTIPLIER = 1.8
+    note_offsets = [0.0] * len(pitches)
+    current_note_offset = 1
+    for i, b in enumerate(to_close):
+        if b:
+            note_offsets[i] = current_note_offset
+            current_note_offset *= -1
+            note_offsets[i + 1] = current_note_offset
+            if pitches[i].to_staff_position() == pitches[i+1].to_staff_position():
+                note_offsets[i] *= SAME_POS_MULTIPLIER
+                note_offsets[i+1] *= SAME_POS_MULTIPLIER
+        else:
+            current_note_offset = 1
+
+    notes = draw.Group()
+
+    note_position = width - INST_MARGIN
+    for pitch, offset in zip(pitches, note_offsets):
+        notes.append(translate(FULL_NOTEHEAD,note_position+offset*OVERLAP_OFFSET, -pitch.to_staff_position()))
+        notes.append(translate(SVG_ACCIDENTAL_MAP[pitch.accidental], note_position+offset*OVERLAP_OFFSET - ACC_OFFSET, -pitch.to_staff_position()))
+
+
+
+    range_lines = draw.Group()
+    for i, line in enumerate(lines):
+        if line:
+            start = (note_position + note_offsets[i] * OVERLAP_OFFSET,
+                    -pitches[i].to_staff_position())
+            end = (note_position + note_offsets[i + 1] * OVERLAP_OFFSET,
+                    -pitches[i + 1].to_staff_position())
+            diff = sub(end, start)
+            l = length(diff)
+            OFFSET_LEN = 1.5
+            range_lines.append(
+                draw.Line(
+                    *add(start, mult(OFFSET_LEN/l, diff)),
+                    *add(end, mult(-OFFSET_LEN/l, diff)),
+                    stroke_width=SMALL_STROKE_WIDTH,
+                    stroke="black",
+                )
+            )
+
+    group = draw.Group(children = [range_lines, notes])
+
     group.append(
         draw.Group(
             children=[
@@ -190,7 +259,7 @@ def parsing_test():
 
 def grafics_test():
     img = from_names(
-        ["mezzosoprano", "fl", "cl", "as", "ts", "bs", "tp", "tb", "btb", "git", "b"]
+        ["mezzosoprano", "fl", "cl", "as", "ts", "bs", "tp", "tb", "btb", "pn", "git", "b"]
     )
     img.save_svg("out.svg")
 
