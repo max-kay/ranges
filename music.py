@@ -223,11 +223,12 @@ class Pitch:
 
 
 class PartialRange:
-    def __init__(self, start: Pitch, end: Pitch, descr: str) -> None:
+    def __init__(self, start: Pitch, end: Pitch, descr: str, preferred: bool) -> None:
         assert start <= end, "start must be smaller than end"
         self.start = start
         self.end = end
         self.descr = descr
+        self.preferred = preferred
 
     def __lt__(self, other) -> bool:
         assert self.start != other.start
@@ -238,15 +239,19 @@ class PartialRange:
 
     def transposed(self, interval: Interval):
         return PartialRange(
-            self.start.transposed(interval), self.end.transposed(interval), self.descr
+            self.start.transposed(interval), self.end.transposed(interval), self.descr, self.preferred
         )
 
     @classmethod
     def from_str(cls, string: str):
         start, end, *rest = string.split()
+        prefered = True
+        if start.startswith("!"):
+            start = start[1:]
+            prefered = False
         start = Pitch.from_str(start)
         end = Pitch.from_str(end)
-        return cls(start, end, " ".join(rest))
+        return cls(start, end, " ".join(rest), prefered)
 
 
 class Instrument:

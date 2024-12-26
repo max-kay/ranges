@@ -67,7 +67,7 @@
 </g>
 </g>
 <g transform="translate(61.28382352941176 28) rotate(-45)">
-<text x="0" y="0" font-size="3" text-anchor="end" font="Cochin">Lisanne</text>
+<text x="0" y="0" font-size="3" text-anchor="end" font="Cochin">Mezzosoprano</text>
 </g>
 </g>
 </g>
@@ -130,7 +130,7 @@
 <use xlink:href="#d2" />
 </g>
 <g transform="translate(61.28382352941176 -20)">
-<use xlink:href="#d0" />
+<path d="M18.7,-13.6 C4.9,-13.6 0,-6.6 0,-0.1 C0,6.4 4.9,13.4 18.7,13.4 C32.5,13.4 37.3,6.4 37.3,-0.1 C37.3,-6.6 32.5,-13.6 18.7,-13.6 M19.5,10.2 C16.7,10.2 14.8,9.4 13.5,6.9 C12.2,4.4 10.4,-2.1 10.3,-4.7 C10.1,-7.4 11.1,-9 13.5,-9.8 C14.7,-10.2 16.3,-10.4 17.9,-10.4 C20.6,-10.4 22.4,-9.8 23.8,-7.1 C25.2,-4.5 27.1,2 27.1,4.5 C27.1,9.4 23.5,10.2 19.5,10.2" fill="black" transform="translate(-1.5 0.0) scale(.08)" id="d3" />
 </g>
 <g transform="translate(57.78382352941176 -20)">
 <use xlink:href="#d2" />
@@ -150,7 +150,7 @@
 </g>
 <g>
 <g transform="translate(61.28382352941176 6)">
-<use xlink:href="#d0" />
+<use xlink:href="#d3" />
 </g>
 <g transform="translate(57.78382352941176 6)">
 <use xlink:href="#d2" />
@@ -186,7 +186,7 @@
 <use xlink:href="#d1" />
 </g>
 <g transform="translate(61.28382352941176 -12)">
-<use xlink:href="#d0" />
+<use xlink:href="#d3" />
 </g>
 <g transform="translate(57.78382352941176 -12)">
 <use xlink:href="#d2" />
@@ -206,7 +206,7 @@
 </g>
 <g>
 <g transform="translate(61.28382352941176 9)">
-<use xlink:href="#d0" />
+<use xlink:href="#d3" />
 </g>
 <g transform="translate(57.78382352941176 9)">
 <use xlink:href="#d2" />
@@ -242,7 +242,7 @@
 <use xlink:href="#d1" />
 </g>
 <g transform="translate(61.28382352941176 -9)">
-<use xlink:href="#d0" />
+<use xlink:href="#d3" />
 </g>
 <g transform="translate(57.78382352941176 -9)">
 <use xlink:href="#d2" />
@@ -262,7 +262,7 @@
 </g>
 <g>
 <g transform="translate(61.28382352941176 13)">
-<use xlink:href="#d0" />
+<use xlink:href="#d3" />
 </g>
 <g transform="translate(57.78382352941176 13)">
 <use xlink:href="#d2" />
@@ -298,7 +298,7 @@
 <use xlink:href="#d1" />
 </g>
 <g transform="translate(61.28382352941176 -5)">
-<use xlink:href="#d0" />
+<use xlink:href="#d3" />
 </g>
 <g transform="translate(57.78382352941176 -5)">
 <use xlink:href="#d2" />
@@ -318,7 +318,7 @@
 </g>
 <g>
 <g transform="translate(61.28382352941176 5)">
-<use xlink:href="#d0" />
+<use xlink:href="#d3" />
 </g>
 <g transform="translate(57.78382352941176 5)">
 <use xlink:href="#d1" />
@@ -342,7 +342,7 @@
 <use xlink:href="#d1" />
 </g>
 <g transform="translate(61.28382352941176 -17)">
-<use xlink:href="#d0" />
+<use xlink:href="#d3" />
 </g>
 <g transform="translate(57.78382352941176 -17)">
 <use xlink:href="#d1" />
@@ -379,7 +379,7 @@
 <use xlink:href="#d1" />
 </g>
 <g transform="translate(61.28382352941176 -7)">
-<use xlink:href="#d0" />
+<use xlink:href="#d3" />
 </g>
 <g transform="translate(57.78382352941176 -7)">
 <use xlink:href="#d1" />
@@ -400,7 +400,7 @@
 </g>
 <g>
 <g transform="translate(61.28382352941176 25)">
-<use xlink:href="#d0" />
+<use xlink:href="#d3" />
 </g>
 <g transform="translate(57.78382352941176 25)">
 <use xlink:href="#d1" />
@@ -430,7 +430,7 @@
 <use xlink:href="#d1" />
 </g>
 <g transform="translate(61.28382352941176 -4)">
-<use xlink:href="#d0" />
+<use xlink:href="#d3" />
 </g>
 <g transform="translate(57.78382352941176 -4)">
 <use xlink:href="#d1" />

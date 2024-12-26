@@ -1,7 +1,7 @@
 from typing import Any
 import drawsvg as draw
 from music import Instrument, Pitch
-from elements import ACC_OFFSET, FULL_NOTEHEAD, LF_CLEF, F_CLEF, SVG_ACCIDENTAL_MAP, UG_CLEF, G_CLEF, CLEF_WIDTH, translate
+from elements import ACC_OFFSET, EMPTY_NOTEHEAD, FULL_NOTEHEAD, LF_CLEF, F_CLEF, SVG_ACCIDENTAL_MAP, UG_CLEF, G_CLEF, CLEF_WIDTH, translate
 from utils import length, sub, add, mult
 
 TEXT_STYLING: dict[str, Any] = {
@@ -166,17 +166,30 @@ def instr_graph(instr: Instrument, width: float, max_y: float) -> draw.Group:
     Pitch C4 (middle C) is at y=0 and D4 at y=-1
     """
     ranges = instr.get_sounding_pitch_ranges()
-    pitches: list[Pitch] = []
+    pitches: list[tuple[Pitch, bool]] = []
     lines: list[bool] = []  # [i] == True -> line from pitches[i] to [i+1]
     for i in range(len(ranges)):
-        pitches.append(ranges[i].start)
+        # start of range
+        is_prefred = False
+        if i!=0 and ranges[i-1].preferred:
+            is_prefred = True
+        if ranges[i].preferred:
+            is_prefred=True
+        pitches.append((ranges[i].start, is_prefred))
+
+        # end of range
+        is_prefred = False
         if (ranges[i].end.to_staff_position() - ranges[i].start.to_staff_position()) > 3:
             lines.append(True)
         else:
             lines.append(False)
         if i != len(ranges) - 1 and ranges[i].end == ranges[i + 1].start:
             continue
-        pitches.append(ranges[i].end)
+        if ranges[i].preferred:
+            is_prefred = True
+        if i != len(ranges) - 1 and ranges[i+1].preferred:
+            is_prefred = True
+        pitches.append((ranges[i].end, is_prefred))
         if i != len(ranges) - 1:
             lines.append(False)
 
@@ -184,7 +197,7 @@ def instr_graph(instr: Instrument, width: float, max_y: float) -> draw.Group:
     to_close = []
     for i in range(len(pitches) - 1):
         to_close.append(
-            (pitches[i + 1].to_staff_position() - pitches[i].to_staff_position()) < 2
+            (pitches[i + 1][0].to_staff_position() - pitches[i][0].to_staff_position()) < 2
         )
 
     SAME_POS_MULTIPLIER = 1.8
@@ -195,7 +208,7 @@ def instr_graph(instr: Instrument, width: float, max_y: float) -> draw.Group:
             note_offsets[i] = current_note_offset
             current_note_offset *= -1
             note_offsets[i + 1] = current_note_offset
-            if pitches[i].to_staff_position() == pitches[i+1].to_staff_position():
+            if pitches[i][0].to_staff_position() == pitches[i+1][0].to_staff_position():
                 note_offsets[i] *= SAME_POS_MULTIPLIER
                 note_offsets[i+1] *= SAME_POS_MULTIPLIER
         else:
@@ -204,8 +217,11 @@ def instr_graph(instr: Instrument, width: float, max_y: float) -> draw.Group:
     notes = draw.Group()
 
     note_position = width - INST_MARGIN
-    for pitch, offset in zip(pitches, note_offsets):
-        notes.append(translate(FULL_NOTEHEAD,note_position+offset*OVERLAP_OFFSET, -pitch.to_staff_position()))
+    for (pitch, prefered), offset in zip(pitches, note_offsets):
+        if prefered:
+            notes.append(translate(FULL_NOTEHEAD,note_position+offset*OVERLAP_OFFSET, -pitch.to_staff_position()))
+        else:
+            notes.append(translate(EMPTY_NOTEHEAD,note_position+offset*OVERLAP_OFFSET, -pitch.to_staff_position()))
         notes.append(translate(SVG_ACCIDENTAL_MAP[pitch.accidental], note_position+offset*OVERLAP_OFFSET - ACC_OFFSET, -pitch.to_staff_position()))
 
 
@@ -214,9 +230,9 @@ def instr_graph(instr: Instrument, width: float, max_y: float) -> draw.Group:
     for i, line in enumerate(lines):
         if line:
             start = (note_position + note_offsets[i] * OVERLAP_OFFSET,
-                    -pitches[i].to_staff_position())
+                    -pitches[i][0].to_staff_position())
             end = (note_position + note_offsets[i + 1] * OVERLAP_OFFSET,
-                    -pitches[i + 1].to_staff_position())
+                    -pitches[i + 1][0].to_staff_position())
             diff = sub(end, start)
             l = length(diff)
             OFFSET_LEN = 1.5
@@ -252,9 +268,6 @@ def instr_graph(instr: Instrument, width: float, max_y: float) -> draw.Group:
 def from_names(names: list[str]) -> draw.Drawing:
     return generate_staff([Instrument.from_file(f"insts/{name}.txt") for name in names])
 
-
-def parsing_test():
-    _trombone = Instrument.from_file("tb.txt")
 
 
 def grafics_test():

@@ -4,4 +4,4 @@ transposition: -j2
 
 E2 Bb4 soft
 B4 C6 warm
-C6 C7 squeeky
+!C6 C7 squeeky
