@@ -1,75 +1,25 @@
 from functools import total_ordering
-
-NOTE_NAMES = [chr(ord("A") + i) for i in range(7)]
-NOTE_TO_STAFF = {
-    "C": 0,
-    "D": 1,
-    "E": 2,
-    "F": 3,
-    "G": 4,
-    "A": 5,
-    "B": 6,
-}
-STAFF_TO_NOTE = {
-    0: "C",
-    1: "D",
-    2: "E",
-    3: "F",
-    4: "G",
-    5: "A",
-    6: "B",
-}
-
-NOTE_TO_MIDI_PITCH = {
-    "C": 0,
-    "D": 2,
-    "E": 4,
-    "F": 5,
-    "G": 7,
-    "A": 9,
-    "B": 11,
-}
-MIDI_PITCH_TO_NOTE = {
-    0: "C",
-    1: "C#",
-    2: "D",
-    3: "Eb",
-    4: "E",
-    5: "F",
-    6: "F#",
-    7: "G",
-    8: "Ab",
-    9: "A",
-    10: "Bb",
-    11: "B",
-}
-ACCIDENTALS = ["&", "b", "", "#", "+"]
-ACCIDENTAL_MAP = {
-    "b": -1,
-    "#": 1,
-    "": 0,
-    "+": 2,
-    "&": -2,
-}
-
-INT_MODIFIER = ["j", "m", "a", "d", ""]
+from .consts import *
 
 
 class Interval:
     def __init__(
         self, number: int, down: bool = False, modifier: str | None = None
     ) -> None:
-        modifier = modifier if modifier else ""
+        modifier = modifier if modifier else "n"
         assert number >= 1
         normalized_num = (number - 1) % 7 + 1
         if normalized_num in [1, 4, 5]:
             assert modifier != "j" and modifier != "m"
         else:
-            assert modifier != ""
+            assert modifier != "n"
         assert modifier in INT_MODIFIER
         self.number = number
         self.down = down
         self.modifier = modifier
+
+    def __eq__(self, other) -> bool:
+        return self.number == other.number and self.down == other.down and self.modifier == other.modifier
 
     @classmethod
     def from_str(cls, string: str):
@@ -96,7 +46,8 @@ class Interval:
 
     def __repr__(self):
         direction = "-" if self.down else ""
-        return f"{self.modifier}{self.number}{direction}"
+        modifier = self.modifier if self.modifier!= "n" else ""
+        return f"{modifier}{self.number}{direction}"
 
     def get_dir(self) -> int:
         return -1 if self.down else 1
@@ -116,14 +67,14 @@ class Interval:
                 case _:
                     assert False, "unreachable"
             match self.modifier:
-                case "":
+                case "n":
                     pass
                 case "a":
                     shift += 1
                 case "d":
                     shift += -1
         else:
-            # doing shift for minor interval
+            # difference from a minor version of that interval
             match number:
                 case 2:
                     shift += 1
@@ -153,7 +104,7 @@ class Pitch:
     def __init__(self, note: str, octave: int, accidental: str | None = None) -> None:
         self.note = note
         self.octave = octave
-        self.accidental = accidental if accidental else ""
+        self.accidental = accidental if accidental else "n"
 
     @classmethod
     def from_str(cls, string: str):
@@ -187,7 +138,7 @@ class Pitch:
 
     def to_staff_position(self) -> int:
         """
-        The staff position puts C4 at 0 and D4 at 1
+        The staff position puts C4 (middle c) at 0 and D4 at 1
         """
         octave_dif = self.octave - 4  # C4 is middle C
         return octave_dif * 7 + NOTE_TO_STAFF[self.note]
@@ -212,14 +163,16 @@ class Pitch:
             return Pitch.from_staff_position(position, accidental)
         except (
             IndexError
-        ):  # happens if the needed accidental exceeds double sharps and double flats
+        ):  # happens if the needed accidental exceeds double sharps or double flats
             return Pitch.from_midi_pitch(correct_midi)
 
     def __eq__(self, other) -> bool:
-        return self.to_midi_pitch() == other.to_midi_pitch()
+        return self.note == other.note and self.octave == other.octave and self.accidental == other.accidental
 
     def __lt__(self, other) -> bool:
-        return self.to_midi_pitch() < other.to_midi_pitch()
+        if self.to_staff_position() == other.to_staff_position():
+            return ACCIDENTALS.index(self.accidental) < ACCIDENTALS.index(other.accidental)
+        return self.to_staff_position() < other.to_staff_position()
 
 
 class PartialRange:
@@ -235,23 +188,27 @@ class PartialRange:
         return self.start < other.start
 
     def __str__(self) -> str:
-        return f"{self.start} {self.end} {self.descr}"
+        start = "" if self.preferred else "!"
+        return f"{start}{self.start} {self.end} {self.descr}"
 
     def transposed(self, interval: Interval):
         return PartialRange(
-            self.start.transposed(interval), self.end.transposed(interval), self.descr, self.preferred
+            self.start.transposed(interval),
+            self.end.transposed(interval),
+            self.descr,
+            self.preferred,
         )
 
     @classmethod
     def from_str(cls, string: str):
         start, end, *rest = string.split()
-        prefered = True
+        preferred = True
         if start.startswith("!"):
             start = start[1:]
-            prefered = False
+            preferred = False
         start = Pitch.from_str(start)
         end = Pitch.from_str(end)
-        return cls(start, end, " ".join(rest), prefered)
+        return cls(start, end, " ".join(rest), preferred)
 
 
 class Instrument:
@@ -272,7 +229,7 @@ class Instrument:
     def __str__(self):
         ranges_str = "\n".join(str(r) for r in self.ranges)
         transposition = (
-            f"{self.transposition}\n" if self.transposition.to_halftones() != 0 else ""
+            f"{self.transposition}\n" if self.transposition != Interval.from_str("1") else ""
         )
         return f"{self.name}\n{transposition}{ranges_str}"
 
@@ -371,5 +328,6 @@ def interval_test():
     assert str(Pitch.from_str("C1").transposed(Interval.from_str("8"))) == "C2"
 
 
-pitch_test()
-interval_test()
+if __name__ == "__main__":
+    pitch_test()
+    interval_test()

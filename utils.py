@@ -1,5 +1,8 @@
 from math import sin, cos, atan2, sqrt
 
+def debug(arg, **kwargs):
+    print(arg, **kwargs)
+    return arg
 
 type Vec = tuple[float, float]
 
@@ -26,6 +29,7 @@ def mult(s: float, v: Vec) -> Vec:
 
 def length(vec: Vec) -> float:
     return sqrt(vec[0] ** 2 + vec[1] ** 2)
+
 
 def rot90(x: float, y: float) -> Vec:
     return (-y, x)
