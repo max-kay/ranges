@@ -1,8 +1,19 @@
+import drawsvg as draw
 from math import sin, cos, atan2, sqrt
+
 
 def debug(arg, **kwargs):
     print(arg, **kwargs)
     return arg
+
+
+def debug_x_line(x, y_0, y_1) -> draw.Line:
+    return draw.Line(x, y_0, x, y_1, stroke_width=0.2, stroke="red")
+
+
+def debug_y_line(x_0, x_1, y) -> draw.Line:
+    return draw.Line(x_0, y, x_1, y, stroke_width=0.2, stroke="red")
+
 
 type Vec = tuple[float, float]
 

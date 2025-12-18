@@ -1,10 +1,20 @@
-# Musical symbols taken from MuseScore 4
+# Musical symbols taken from the default font of MuseScore 4
+
 import drawsvg as draw
 
-from music.consts import ACCIDENTALS
+PX_PER_CM = 28.3
+A4 = 21 * PX_PER_CM, 29.7 * PX_PER_CM
+FONT_FAMILY = "FreeSerif"
+TEXT_MARGIN_FACTOR = 0.75
+
+NOTE_WIDTH = 2.98
+ACC_MARGIN = 0.5
+
+STAFF_STROKE_WIDTH = 0.22
+BAR_LINE_WIDTH = 0.36
 
 
-def translate(elem, x, y) -> draw.Group:
+def translated_group(elem, x, y) -> draw.Group:
     return draw.Group(children=[elem], transform=f"translate({x} {y})")
 
 
@@ -16,20 +26,12 @@ def from_musescore(
     )
 
 
-NOTE_WIDTH = 2.98
-ACC_MARGIN = 0.5
-
-STAFF_STROKE_WIDTH = 0.11
-BAR_LINE_WIDTH = 0.18
-
 FULL_NOTEHEAD = from_musescore(
     "M18.7,-13.6 C4.9,-13.6 0,-6.6 0,-0.1 C0,6.4 4.9,13.4 18.7,13.4 C32.5,13.4 37.3,6.4 37.3,-0.1 C37.3,-6.6 32.5,-13.6 18.7,-13.6",
-    translate="-1.5 0.0",
 )
 
 EMPTY_NOTEHEAD = from_musescore(
     "M18.7,-13.6 C4.9,-13.6 0,-6.6 0,-0.1 C0,6.4 4.9,13.4 18.7,13.4 C32.5,13.4 37.3,6.4 37.3,-0.1 C37.3,-6.6 32.5,-13.6 18.7,-13.6 M19.5,10.2 C16.7,10.2 14.8,9.4 13.5,6.9 C12.2,4.4 10.4,-2.1 10.3,-4.7 C10.1,-7.4 11.1,-9 13.5,-9.8 C14.7,-10.2 16.3,-10.4 17.9,-10.4 C20.6,-10.4 22.4,-9.8 23.8,-7.1 C25.2,-4.5 27.1,2 27.1,4.5 C27.1,9.4 23.5,10.2 19.5,10.2",
-    translate="-1.5 0.0",
 )
 
 CLEF_WIDTH = 5.3
@@ -64,7 +66,7 @@ DFLAT = from_musescore(
     "M28.8,-15.5 C23.8,-15.5 20.9,-12.5 20.4,-11.9 L20.8,-43.9 C20.8,-44.7 20.2,-45.3 19.4,-45.3 L18.2,-45.3 C17.4,-45.3 16.8,-44.7 16.8,-43.9 L17.1,-13.8 C15.8,-14.8 14.2,-15.5 12,-15.5 C7,-15.5 4.1,-12.4 3.6,-11.8 L4,-43.9 C4,-44.7 3.4,-45.3 2.6,-45.3 L1.4,-45.3 C0.6,-45.3 0,-44.7 0,-43.9 L0.5,16.2 C0.5,17 1.1,17.6 1.9,17.6 C2.1,17.6 2.5,17.4 2.7,17.3 C8.5,14.4 13.6,10.2 17.2,4.8 L17.3,16.2 C17.3,17 17.9,17.6 18.7,17.6 C18.9,17.6 19.3,17.4 19.5,17.3 C28.1,13 37.1,4.8 37.1,-5.5 C37.1,-10.7 34.7,-15.5 28.8,-15.5 M3.3,12.7 L3.6,-6.8 C3.8,-7.7 5.3,-10.6 9.3,-10.6 C12.9,-10.6 13.2,-7.2 13.2,-5.1 C13.2,3.8 9.9,7.5 3.3,12.7 M20.1,12.7 L20.4,-6.8 C20.6,-7.7 22.1,-10.6 26.1,-10.6 C29.7,-10.6 30,-7.2 30,-5.1 C30,3.8 26.7,7.5 20.1,12.7"
 )
 
-SVG_ACCIDENTAL_MAP = {
+SVG_ACC_MAP = {
     "+": DSHARP,
     "#": SHARP,
     "": draw.Group(),
@@ -73,7 +75,7 @@ SVG_ACCIDENTAL_MAP = {
     "&": DFLAT,
 }
 
-SVG_ACCIDENTAL_WIDTH = {
+SVG_ACC_WIDTH = {
     "+": 2.2,
     "#": 1.95,
     "": 0.0,
@@ -82,23 +84,6 @@ SVG_ACCIDENTAL_WIDTH = {
     "&": 2.97,
 }
 
-SVG_ACC_OFFSET = {key: val + NOTE_WIDTH/2 + ACC_MARGIN if key != "" else NOTE_WIDTH/2 for key, val in SVG_ACCIDENTAL_WIDTH.items() }
-
-if __name__ == "__main__":
-    LEN = 80
-    img = draw.Drawing(LEN, 20)
-
-    C_LINE = 5
-    F_LINE = 5 + 4
-
-    for i in range(5):
-        y = C_LINE + (i + 1) * 2
-        img.append(draw.Line(0, y, LEN, y, stroke_width=0.25, stroke="black"))
-    img.append(translate(F_CLEF, 3, F_LINE))
-
-    dist = 10
-
-    for i, acc in enumerate(ACCIDENTALS):
-        img.append(translate(EMPTY_NOTEHEAD, dist*i + 20, F_LINE))
-        img.append(translate(SVG_ACCIDENTAL_MAP[acc], dist*i + 20 -SVG_ACCIDENTAL_WIDTH[acc] - NOTE_WIDTH/2 - ACC_MARGIN, F_LINE))
-    img.save_svg("test.svg")
+SVG_ACC_OFFSET = {
+    key: val + ACC_MARGIN if key != "" else 0 for key, val in SVG_ACC_WIDTH.items()
+}

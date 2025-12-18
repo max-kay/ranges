@@ -48,12 +48,18 @@ MIDI_PITCH_TO_NOTE = {
     11: "B",
 }
 ACCIDENTALS = ["&", "b", "n", "#", "+"]
+
+ACC_UNICODE = {
+    "b": "\u266d",
+    "n": "\u266e",
+    "#": "\u266f",
+}
 ACCIDENTAL_MAP = {
-    "b": -1,
-    "#": 1,
-    "n": 0,
-    "+": 2,
     "&": -2,
+    "b": -1,
+    "n": 0,
+    "#": 1,
+    "+": 2,
 }
 
 INT_MODIFIER = ["j", "m", "a", "d", "n"]
