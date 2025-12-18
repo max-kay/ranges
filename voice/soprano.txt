@@ -1,0 +1,5 @@
+Soprano
+
+Ranges:
+!A5 C6
+C4 A5

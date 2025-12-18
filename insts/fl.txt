@@ -1,5 +1,7 @@
 Flute
 
-!B3 C4
-C4 C6 all
-!C6 C7
+Ranges:
+!C4 A4 Warm, Soft
+A4 A5 Sweet, Clear
+A5 A6 Brilliant
+!A6 C7 Piercing

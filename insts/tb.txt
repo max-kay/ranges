@@ -1,5 +1,6 @@
 Trombone
 
-E2 G2 thick
+Ranges:
+E2 G2 Thick
 G2 G4 Controlable
 !G4 C5 Lead

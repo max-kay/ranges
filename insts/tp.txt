@@ -1,8 +1,14 @@
 Trumpet
 
-transposition: -j2
+Transposition: -j2
 
-!F#3 C4 muddy
-C4 A5 comfortable
-A5 D6 bright
-!D6 G6 lead
+Ranges:
+!F#3 C4 Muddy
+C4 A5 Comfortable
+A5 D6 Bright
+!D6 G6 Lead
+
+Notes:
+The trumpet leading the horn section should not be placed lower than sounding D4.
+For high notes stepwise approach is helpfull for precision
+

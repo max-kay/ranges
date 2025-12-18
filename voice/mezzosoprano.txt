@@ -1,3 +1,4 @@
 Mezzosoprano
 
-A3 A5 all
+Ranges:
+A3 A5

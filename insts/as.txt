@@ -1,8 +1,10 @@
 Alto Saxophone
 
-transposition: -j6
+Transposition: -j6
 
-!Bb3 D4 hard to control
-D4 C#5 warm controlable
-D5 C#6 bright controlable
-!D6 F6 hard to control
+Ranges:
+!Bb3 D4 Hard to Control
+D4 C#5 Warm Controlable
+D5 C#6 Bright Controlable
+D6 F#6 Hard to Control
+!F#6 D7 Possible

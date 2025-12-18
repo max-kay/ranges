@@ -1,6 +1,9 @@
 Guitar
 
-transposition: -8
+Transposition: -8
 
-E3 C6 all
+Open Strings: E3 A3 D4 G4 B4 E5
+
+Ranges:
+1 m14
 

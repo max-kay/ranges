@@ -1,0 +1,8 @@
+Flügelhorn
+
+Transposition: -j2
+
+Ranges:
+!F#3 C4
+C4 A5
+!A5 D6 
