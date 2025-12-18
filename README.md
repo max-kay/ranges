@@ -3,6 +3,10 @@
 
 A Python library to generate nice overviews over the ranges instruments.
 
+<p align="center">
+  <img src="example.svg" width="400">
+</p>
+
 ## Instrument files
 
 *Normal*
